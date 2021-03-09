@@ -1,17 +1,12 @@
-async function getHabbo(name) {
  const { get } = require("superagent")
+
+async function getHabbo(name) {
+
   
-  name = name.charAt(0).toUpperCase() + name.slice(1);
   const url = await get("https://habbo.es/api/public/users?name="+name)
   const habbo = url.body
   
-  var datos = {
-    nombre: habbo.name,
-    apodo: habbo.motto,
-    date: habbo.memberSince
-    
-  }
-  return datos;
+  return habbo
   
 }
 
